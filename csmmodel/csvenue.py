@@ -1,19 +1,25 @@
 import sqlalchemy
+import sqlalchemy.orm
 from csmmodel.base import Base
+import csmmodel.csvenueedition
 
 
 class CsVenue(Base):
     __tablename__ = 'csvenues'
 
-    abbreviation = sqlalchemy.Column(sqlalchemy.String, primary_key=True)
+    abbr = sqlalchemy.Column(sqlalchemy.String, primary_key=True)
     fullname = sqlalchemy.Column(sqlalchemy.String)
     type = sqlalchemy.Column(sqlalchemy.String)
+    dblp_url = sqlalchemy.Column(sqlalchemy.String)
+    editions = sqlalchemy.orm.relationship('CsVenueEdition',
+                                           back_populates='venue')
 
-    def __init__(self, abbreviation, name, type):
-        self.abbreviation = abbreviation
-        self.fullname = name
-        self.type= type
+    def __init__(self, abbr, type, fullname=""):
+        self.abbr = abbr
+        self.type = type
+        self.fullname = fullname
+
 
     def __repr__(self):
         return "<Venue(abbr='%s', fullname='%s', type='%s')>" \
-               % (self.abbreviation, self.fullname, self.type)
+               % (self.abbr, self.fullname, self.type)
