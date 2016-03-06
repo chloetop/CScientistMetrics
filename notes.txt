@@ -1,0 +1,9 @@
+csvenue (editions, backref-venue)
+
+csvenueedition (publications, backref-edition)
+
+cspublication
+
+csauthor
+
+author_pub_association
