@@ -7,13 +7,13 @@ class CsVenueEdition(Base):
     __tablename__ = 'csvenueseditions'
 
     abbr = sqlalchemy.Column(sqlalchemy.String, primary_key=True)
-    venue = sqlalchemy.Column(sqlalchemy.String,
+    venue_abbr = sqlalchemy.Column(sqlalchemy.String,
                               sqlalchemy.ForeignKey('csvenues.abbr'))
     ordinal = sqlalchemy.Column(sqlalchemy.Integer)
     year = sqlalchemy.Column(sqlalchemy.Integer)
-    publications = sqlalchemy.orm.relationship('CsPublication')
+    publications = sqlalchemy.orm.relationship('CsPublication', backref='edition')
 
-    def __init__(self, abbr, venue=venue, ordinal=ordinal, year=year):
+    def __init__(self, abbr, venue, ordinal, year):
         self.abbr = abbr
         self.venue = venue
         self.ordinal = ordinal

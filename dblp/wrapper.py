@@ -16,6 +16,7 @@ class DBLPContentHandler(xml.sax.ContentHandler):
         self.editions = {}
         self.authors = {}
         self.content = ""
+        self.publication = None
         self.authornames = []
         self.pubList = ["article", "inproceedings",
                         # "proceedings",
@@ -27,12 +28,10 @@ class DBLPContentHandler(xml.sax.ContentHandler):
 
     def startElement(self, name, attrs):
         self.content = ""
-        self.authornames = []
         if name in self.pubList:
             self.publication = csmmodel.cspublication.CsPublication(
-                attrs.getValue("key"))
-            # if name in self.fieldList:
-            #    self.field = name
+               attrs.getValue("key"))
+            self.authornames = []
 
     def retrieve_venue(self, venue_abbr, type):
         if venue_abbr not in self.venues:
@@ -53,38 +52,43 @@ class DBLPContentHandler(xml.sax.ContentHandler):
         return self.editions[edition_abbr]
 
     def retrieve_authors(self, author_names):
+        print(author_names)
         pub_authors = []
         for author_name in author_names:
             if author_name not in self.authors:
                 self.authors[author_name] = csmmodel.csauthor.CsAuthor(
-                    name=author_name)
+                   name=author_name)
                 self.session.add(self.authors[author_name])
             pub_authors.append(self.authors[author_name])
         return pub_authors
 
     def endElement(self, name):
-        if name == 'url':
-            split = re.split('\.|/', self.content)
-            self.ed_abbreviation = split[-2]
-            self.venue_abbr = split[-3]
-        if name == 'year':
-            self.year = self.content
-        if name == 'author':
-            self.authornames.append(self.content)
-        if name == 'title':
-            self.publication.title = self.content
-        if name in self.pubList:
-            venue = self.retrieve_venue(self.venue_abbr, name)
-            edition = self.retrieve_edition(self.ed_abbreviation, venue,
-                                          self.year)
-            pub_authors = self.retrieve_authors(self.authornames)
-            self.publication.edition = edition
-            for idx, pub_author in enumerate(pub_authors):
-                a = csmmodel.author_pub_association.CsAuthorPubAssociation(position=idx)
-                a.author = pub_author
-                self.publication.authors.append(a)
-            self.session.add(self.publication)
-            self.session.commit()
+        if self.publication:
+            if name == 'url':
+                split = re.split('\.|/', self.content)
+                self.ed_abbreviation = split[-2]
+                self.venue_abbr = split[-3]
+            if name == 'year':
+                self.year = self.content
+            if name == 'author':
+                print(name + " = " + self.content)
+                self.authornames.append(self.content)
+            if name == 'title':
+                print(self.content)
+                self.publication.title = self.content
+            if name in self.pubList:
+                venue = self.retrieve_venue(self.venue_abbr, name)
+                edition = self.retrieve_edition(self.ed_abbreviation, venue,
+                                              self.year)
+                pub_authors = self.retrieve_authors(self.authornames)
+                self.publication.edition = edition
+                for idx, pub_author in enumerate(pub_authors):
+                    a = csmmodel.author_pub_association.CsAuthorPubAssociation(position=idx)
+                    a.author = pub_author
+                    self.publication.authors.append(a)
+                self.session.add(self.publication)
+                self.session.commit()
+                self.publication = None
 
     def characters(self, content):
         self.content += content #.encode('utf-8').replace('\\', '\\\\')

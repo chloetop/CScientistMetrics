@@ -1,5 +1,7 @@
 import sqlalchemy
 from csmmodel.base import Base
+import csmmodel.csauthor
+import csmmodel.cspublication
 
 
 class CsAuthorPubAssociation(Base):

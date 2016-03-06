@@ -12,7 +12,7 @@ class CsVenue(Base):
     type = sqlalchemy.Column(sqlalchemy.String)
     dblp_url = sqlalchemy.Column(sqlalchemy.String)
     editions = sqlalchemy.orm.relationship('CsVenueEdition',
-                                           back_populates='venue')
+                                           backref='venue')
 
     def __init__(self, abbr, type, fullname=""):
         self.abbr = abbr
