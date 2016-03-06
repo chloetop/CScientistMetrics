@@ -52,7 +52,6 @@ class DBLPContentHandler(xml.sax.ContentHandler):
         return self.editions[edition_abbr]
 
     def retrieve_authors(self, author_names):
-        print(author_names)
         pub_authors = []
         for author_name in author_names:
             if author_name not in self.authors:
@@ -70,11 +69,11 @@ class DBLPContentHandler(xml.sax.ContentHandler):
                 self.venue_abbr = split[-3]
             if name == 'year':
                 self.year = self.content
+            if name == 'pages':
+                self.publication.pages = self.content
             if name == 'author':
-                print(name + " = " + self.content)
                 self.authornames.append(self.content)
             if name == 'title':
-                print(self.content)
                 self.publication.title = self.content
             if name in self.pubList:
                 venue = self.retrieve_venue(self.venue_abbr, name)
