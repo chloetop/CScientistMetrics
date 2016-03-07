@@ -77,7 +77,9 @@ class DBLPContentHandler(xml.sax.ContentHandler):
             if name == 'pages':
                 self.publication.pages = self.content
             if name == 'author':
-                self.authornames.append(self.content)
+                authorname = self.content
+                if authorname not in self.authornames:
+                    self.authornames.append(authorname)
             if name == 'title':
                 self.publication.title = self.content
             if name in self.pubList:
@@ -93,7 +95,7 @@ class DBLPContentHandler(xml.sax.ContentHandler):
                 self.session.add(self.publication)
                 if self.counter == 5000:
                     self.session.commit()
-                    print("committed")
+                    print("committed another 5000")
                     self.counter = 0
                 self.publication = None
 
