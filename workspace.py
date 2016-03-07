@@ -9,11 +9,17 @@ import csmmodel.csvenue
 from sqlalchemy.orm import sessionmaker
 import xml.sax
 import dblp.wrapper
+import datetime
+
+
+print(datetime.datetime.now())
 
 database_directory = "/Users/sback/tud.gdrive/research/peer_review/quantitative_db_effects/our_dataset"
 
 engine = create_engine('sqlite:///' + database_directory + '/data.db',
-                       echo=True)
+                       echo=False)
+
+#engine = create_engine('postgresql://sback:piripicchio@localhost:5432/cscientists')
 
 Base.metadata.drop_all(engine)
 
@@ -56,3 +62,5 @@ xml.sax.parse(source, dblp.wrapper.DBLPContentHandler(session))
 session.commit()
 
 session.close()
+
+print(datetime.datetime.now())

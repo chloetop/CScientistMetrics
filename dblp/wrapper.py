@@ -15,23 +15,17 @@ class DBLPContentHandler(xml.sax.ContentHandler):
         self.venues = {}
         self.editions = {}
         self.authors = {}
+        self.counter = 0
         self.content = ""
         self.publication = None
         self.authornames = []
         self.pubList = ["article", "inproceedings",
                         # "proceedings",
-                        "book",
-                        "incollection",
+                        # "book",
+                        # "incollection",
                         # "phdthesis", "mastersthesis",
                         # "www"
                         ]
-
-    def startElement(self, name, attrs):
-        self.content = ""
-        if name in self.pubList:
-            self.publication = csmmodel.cspublication.CsPublication(
-               attrs.getValue("key"))
-            self.authornames = []
 
     def retrieve_venue(self, venue_abbr, type):
         if venue_abbr not in self.venues:
@@ -43,7 +37,10 @@ class DBLPContentHandler(xml.sax.ContentHandler):
 
     def retrieve_edition(self, edition_abbr, venue, year):
         if edition_abbr not in self.editions:
-            ordinal = re.findall('(\d+)$', edition_abbr)[-1]
+            if venue.type == 'inproceedings':
+                ordinal = year
+            else:
+                ordinal = re.findall('(\d+)$', edition_abbr)[-1]
             self.editions[
                 edition_abbr] = csmmodel.csvenueedition.CsVenueEdition(
                 abbr=edition_abbr, venue=venue, ordinal=ordinal,
@@ -60,6 +57,14 @@ class DBLPContentHandler(xml.sax.ContentHandler):
                 self.session.add(self.authors[author_name])
             pub_authors.append(self.authors[author_name])
         return pub_authors
+
+    def startElement(self, name, attrs):
+        self.content = ""
+        if name in self.pubList:
+            self.publication = csmmodel.cspublication.CsPublication(
+               attrs.getValue("key"))
+            self.counter += 1
+            self.authornames = []
 
     def endElement(self, name):
         if self.publication:
@@ -86,7 +91,10 @@ class DBLPContentHandler(xml.sax.ContentHandler):
                     a.author = pub_author
                     self.publication.authors.append(a)
                 self.session.add(self.publication)
-                self.session.commit()
+                if self.counter == 5000:
+                    self.session.commit()
+                    print("committed")
+                    self.counter = 0
                 self.publication = None
 
     def characters(self, content):
