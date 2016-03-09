@@ -59,6 +59,11 @@ class DBLPContentHandler(xml.sax.ContentHandler):
             pub_authors.append(self.authors[author_name])
         return pub_authors
 
+    def log_ed_abbreviation(self, ed_abbr, pub_abbr):
+        logging.error(
+                "I had to make up the ed_abbreviation '%s' for pub '%s'" %
+                (ed_abbr, pub_abbr))
+
     def add_venue_and_edition(self, features, url=None, pub_abbr=None):
         if url:
             split = re.split('\.|/', url)
@@ -69,21 +74,29 @@ class DBLPContentHandler(xml.sax.ContentHandler):
             features['venue_abbr'] = split[1]
             if 'volume' in features:
                 features['ed_abbreviation'] = split[1] + features['volume']
+                self.log_ed_abbreviation(features['ed_abbreviation'], pub_abbr)
             elif 'year' in features:
                 features['ed_abbreviation'] = split[1] + features['year']
-            logging.error(
-                "I had to make up the ed_abbreviation '%s' for pub '%s'" %
-                (features['ed_abbreviation'], pub_abbr))
+                self.log_ed_abbreviation(features['ed_abbreviation'], pub_abbr)
+            else:
+                logging.error(
+                  "Cannot find/make ed_abbreviation for pub '%s' used default" %
+                  (pub_abbr))
+                features['ed_abbreviation'] = "MADEUP00"
 
     def startElement(self, name, attrs):
         self.content = ""
         if name in self.pubList:
             # starting to parse a new publication
-            self.publication = csmmodel.cspublication.CsPublication(
-                attrs.getValue("key"))
-            self.counter += 1
-            self.features = dict()
-            self.features['author_names'] = []
+            pub_abbr = attrs.getValue("key")
+            if pub_abbr.startswith('dblpnote/'):
+                logging.debug("Skipping a dblpnote")
+            else:
+                self.publication = csmmodel.cspublication.CsPublication(
+                    attrs.getValue("key"))
+                self.counter += 1
+                self.features = dict()
+                self.features['author_names'] = []
 
     def endElement(self, name):
         if self.publication:
