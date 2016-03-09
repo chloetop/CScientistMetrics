@@ -14,6 +14,32 @@
 <url>db/journals/cacm/cacm53.html#Gentry10</url>
 </article>
 
+<article mdate="2016-02-01" key="journals/scp/LePFL16">
+<author>Thi Thieu Hoa Le</author>
+<author>Roberto Passerone</author>
+<author>Ulrich Fahrenberg</author>
+<author>Axel Legay</author>
+<title>A tag contract framework for modeling heterogeneous systems.</title>
+<pages>225-246</pages>
+<year>2016</year>
+<volume>115-116</volume>
+<journal>Sci. Comput. Program.</journal>
+<ee>http://dx.doi.org/10.1016/j.scico.2015.06.004</ee>
+<url>db/journals/scp/scp115.html#LePFL16</url>
+</article>
+
+<article mdate="2010-02-02" key="journals/dpd/CetintemelK02">
+<author>Ugur &Ccedil;etintemel</author>
+<author>Peter J. Keleher</author>
+<title>Light-Weight Currency Management Mechanisms in Mobile and Weakly-Connected Environments.</title>
+<pages>53-71</pages>
+<year>2002</year>
+<volume>11</volume>
+<journal>Distributed and Parallel Databases</journal>
+<number>1</number>
+<ee>http://dx.doi.org/10.1023/A:1013377523199</ee>
+</article>
+
 <article mdate="2011-12-07" key="journals/eccc/ECCC-TR04-067" publtype="informal publication">
 <author>Hadi Salmasian</author>
 <author>Ravindran Kannan</author>
