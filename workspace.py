@@ -9,10 +9,13 @@ import csmmodel.csvenue
 from sqlalchemy.orm import sessionmaker
 import xml.sax
 import dblp.wrapper
-import datetime
+import logging
+logging.basicConfig(level=logging.INFO, format='%(asctime)s %(message)s')
+logging.getLogger().setLevel(logging.DEBUG)
 
 
-print(datetime.datetime.now())
+
+logging.debug('Starting the parsing process')
 
 database_directory = "data/"
 
@@ -63,4 +66,5 @@ session.commit()
 
 session.close()
 
-print(datetime.datetime.now())
+logging.debug('Finished the parsing process')
+
