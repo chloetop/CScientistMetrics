@@ -27,6 +27,20 @@
 <url>db/conf/sigsoft/sse2015.html#PhamMS15</url>
 </inproceedings>
 
+<article mdate="2015-04-20" key="journals/biomedsem/BollingWH14">
+<author>Christian B&ouml;lling</author>
+<author>Michael Weidlich</author>
+<author>Hermann-Georg Holzh&uuml;tter</author>
+<title>SEE: structured representation of scientific evidence in the biomedical domain using Semantic Web techniques.</title>
+<pages>S1</pages>
+<year>2014</year>
+<volume>5</volume>
+<journal>J. Biomedical Semantics</journal>
+<number>S-1</number>
+<ee>http://dx.doi.org/10.1186/2041-1480-5-S1-S1</ee>
+<url>db/journals/biomedsem/biomedsem5S.html#BollingWH14</url>
+</article>
+
 <inproceedings mdate="2014-11-07" key="conf/sigsoft/RayPFD14">
 <author>Baishakhi Ray</author>
 <author>Daryl Posnett</author>
