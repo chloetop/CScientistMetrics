@@ -14,6 +14,18 @@
 <url>db/journals/cacm/cacm53.html#Gentry10</url>
 </article>
 
+<article mdate="2011-12-07" key="journals/eccc/ECCC-TR04-067" publtype="informal publication">
+<author>Hadi Salmasian</author>
+<author>Ravindran Kannan</author>
+<author>Santosh Vempala</author>
+<title>The Spectral Method for Mixture Models</title>
+<journal>Electronic Colloquium on Computational Complexity (ECCC)</journal>
+<year>2004</year>
+<number>067</number>
+<url>db/journals/eccc/eccc11.html#ECCC-TR04-067</url>
+<ee>http://eccc.hpi-web.de/eccc-reports/2004/TR04-067/index.html</ee>
+</article>
+
 <inproceedings mdate="2015-12-14" key="conf/sigsoft/PhamMS15">
 <author>Raphael Pham</author>
 <author>Jonas M&ouml;rschbach</author>
