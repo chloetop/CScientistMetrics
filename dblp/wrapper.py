@@ -59,6 +59,22 @@ class DBLPContentHandler(xml.sax.ContentHandler):
             pub_authors.append(self.authors[author_name])
         return pub_authors
 
+    def add_venue_and_edition(self, features, url=None, pub_abbr=None):
+        if url:
+            split = re.split('\.|/', url)
+            features['ed_abbreviation'] = split[-2]
+            features['venue_abbr'] = split[-3]
+        elif pub_abbr:
+            split = re.split('/', pub_abbr)
+            features['venue_abbr'] = split[1]
+            if 'volume' in features:
+                features['ed_abbreviation'] = split[1] + features['volume']
+            elif 'year' in features:
+                features['ed_abbreviation'] = split[1] + features['year']
+            logging.error(
+                "I had to make up the ed_abbreviation '%s' for pub '%s'" %
+                (features['ed_abbreviation'], pub_abbr))
+
     def startElement(self, name, attrs):
         self.content = ""
         if name in self.pubList:
@@ -78,11 +94,9 @@ class DBLPContentHandler(xml.sax.ContentHandler):
                 else:
                     logging.debug(
                         "found duplicated author %s in %s" %
-                                        (author_name, self.publication.abbr))
+                        (author_name, self.publication.abbr))
             elif name == 'url':
-                split = re.split('\.|/', self.content)
-                self.features['ed_abbreviation'] = split[-2]
-                self.features['venue_abbr'] = split[-3]
+                self.add_venue_and_edition(self.features, url=self.content)
             # features
             elif name == 'year':
                 self.features['year'] = self.content
@@ -95,6 +109,9 @@ class DBLPContentHandler(xml.sax.ContentHandler):
                 self.publication.title = self.content
             # closing the publication
             elif name in self.pubList:
+                if 'venue_abbr' not in self.features:
+                    self.add_venue_and_edition(self.features,
+                                               pub_abbr=self.publication.abbr)
                 venue = self.retrieve_venue(self.features['venue_abbr'], name)
                 edition = self.retrieve_edition(self.features, venue)
                 pub_authors = self.retrieve_authors(
