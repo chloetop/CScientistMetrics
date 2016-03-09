@@ -38,7 +38,10 @@ class DBLPContentHandler(xml.sax.ContentHandler):
             if venue.type == 'inproceedings':
                 ordinal = features['year']
             else:
-                ordinal = features['volume']
+                if 'volume' in features:
+                    ordinal = features['volume']
+                else:
+                    ordinal = re.findall('(\d+)', ed_abbr)[-1]
             self.editions[
                 ed_abbr] = csmmodel.csvenueedition.CsVenueEdition(
                 abbr=ed_abbr, venue=venue, ordinal=ordinal,
