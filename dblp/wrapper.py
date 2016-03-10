@@ -93,6 +93,10 @@ class DBLPContentHandler(xml.sax.ContentHandler):
             if pub_abbr.split('/')[0] in self.ignorable_pubs:
                 logging.debug(
                     "Skipping a '%s' publication" % pub_abbr.split('/')[0])
+            elif 'publtype' in attrs and attrs.getValue(
+                    "publtype") == 'informal publication':
+                logging.debug(
+                    "Skipping informal publication '%s' " % pub_abbr)
             else:
                 self.publication = csmmodel.cspublication.CsPublication(
                     attrs.getValue("key"))

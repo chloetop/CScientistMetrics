@@ -158,6 +158,15 @@
 <url>db/series/springer/Mens2008.html#DAmbrosGLP08</url>
 </incollection>
 
+<article mdate="2011-12-29" key="tr/ibm/LILOG43" publtype="informal publication">
+<author>Rainer B&auml;uerle</author>
+<title>Ereignisse und Repr&auml;sentationen</title>
+<journal>LILOG-Report</journal>
+<volume>43</volume>
+<year>1988</year>
+<publisher>IBM Deutschland GmbH</publisher>
+</article>
+
 <inproceedings mdate="2015-09-08" key="conf/icse/SiegmundSA15">
 <author>Janet Siegmund</author>
 <author>Norbert Siegmund</author>
