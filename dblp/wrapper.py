@@ -85,6 +85,10 @@ class DBLPContentHandler(xml.sax.ContentHandler):
                     (pub_abbr))
                 features['ed_abbreviation'] = "MADEUP00"
 
+    def add_doi(self, text):
+        if re.search('\Wdoi\W',text):
+            self.publication.doi = '/'.join(text.split('/')[-2:])
+
     def startElement(self, name, attrs):
         self.content = ""
         if name in self.pubList:
@@ -126,6 +130,8 @@ class DBLPContentHandler(xml.sax.ContentHandler):
                 self.publication.pages = self.content
             elif name == 'title':
                 self.publication.title = self.content
+            elif name == 'ee':
+                self.add_doi(self.content)
             # closing the publication
             elif name in self.pubList:
                 if 'venue_abbr' not in self.features:

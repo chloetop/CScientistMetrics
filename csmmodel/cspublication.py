@@ -11,6 +11,7 @@ class CsPublication(Base):
                                      sqlalchemy.ForeignKey('csvenueseditions.abbr'))
     title = sqlalchemy.Column(sqlalchemy.String)
     pages = sqlalchemy.Column(sqlalchemy.String)
+    doi = sqlalchemy.Column(sqlalchemy.String)
 
     authors = sqlalchemy.orm.relationship('CsAuthorPubAssociation',
                                           back_populates='publication')
