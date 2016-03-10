@@ -23,6 +23,7 @@ class DBLPContentHandler(xml.sax.ContentHandler):
                         # "proceedings", "book", "incollection", "phdthesis",
                         # "mastersthesis", "www"
                         ]
+        self.ignorable_pubs = ["dblpnote", "persons"]
 
     def retrieve_venue(self, venue_abbr, type):
         if venue_abbr not in self.venues:
@@ -61,8 +62,8 @@ class DBLPContentHandler(xml.sax.ContentHandler):
 
     def log_ed_abbreviation(self, ed_abbr, pub_abbr):
         logging.error(
-                "I had to make up the ed_abbreviation '%s' for pub '%s'" %
-                (ed_abbr, pub_abbr))
+            "I had to make up the ed_abbreviation '%s' for pub '%s'" %
+            (ed_abbr, pub_abbr))
 
     def add_venue_and_edition(self, features, url=None, pub_abbr=None):
         if url:
@@ -80,8 +81,8 @@ class DBLPContentHandler(xml.sax.ContentHandler):
                 self.log_ed_abbreviation(features['ed_abbreviation'], pub_abbr)
             else:
                 logging.error(
-                  "Cannot find/make ed_abbreviation for pub '%s' used default" %
-                  (pub_abbr))
+                    "Cannot find/make ed_abbreviation for pub '%s' used default" %
+                    (pub_abbr))
                 features['ed_abbreviation'] = "MADEUP00"
 
     def startElement(self, name, attrs):
@@ -89,8 +90,9 @@ class DBLPContentHandler(xml.sax.ContentHandler):
         if name in self.pubList:
             # starting to parse a new publication
             pub_abbr = attrs.getValue("key")
-            if pub_abbr.startswith('dblpnote/'):
-                logging.debug("Skipping a dblpnote")
+            if pub_abbr.split('/')[0] in self.ignorable_pubs:
+                logging.debug(
+                    "Skipping a '%s' publication" % pub_abbr.split('/')[0])
             else:
                 self.publication = csmmodel.cspublication.CsPublication(
                     attrs.getValue("key"))

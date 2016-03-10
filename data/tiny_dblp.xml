@@ -14,6 +14,17 @@
 <url>db/journals/cacm/cacm53.html#Gentry10</url>
 </article>
 
+<article mdate="2002-01-03" key="persons/Codd81">
+<author>E. F. Codd</author>
+<title>The Capabilities of Relational Database Management Systems.</title>
+<journal>IBM Research Report, San Jose, California</journal>
+<month>May</month>
+<year>1981</year>
+<volume>RJ3132</volume>
+<cdrom>ibmTR/rj3132.pdf</cdrom>
+<ee>db/labs/ibm/RJ3132.html</ee>
+</article>
+
 <article mdate="2016-02-01" key="journals/scp/LePFL16">
 <author>Thi Thieu Hoa Le</author>
 <author>Roberto Passerone</author>
