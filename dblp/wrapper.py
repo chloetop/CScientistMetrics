@@ -42,7 +42,13 @@ class DBLPContentHandler(xml.sax.ContentHandler):
                 if 'volume' in features:
                     ordinal = features['volume']
                 else:
-                    ordinal = re.findall('(\d+)', ed_abbr)[-1]
+                    try:
+                        ordinal = re.findall('(\d+)', ed_abbr)[-1]
+                    except IndexError as ie:
+                        logging.error(
+                            "problems with %s" %
+                            (self.publication.abbr))
+                        raise
             self.editions[
                 ed_abbr] = csmmodel.csvenueedition.CsVenueEdition(
                 abbr=ed_abbr, venue=venue, ordinal=ordinal,
@@ -86,7 +92,7 @@ class DBLPContentHandler(xml.sax.ContentHandler):
                 features['ed_abbreviation'] = "MADEUP00"
 
     def add_doi(self, text):
-        if re.search('\Wdoi\W',text):
+        if re.search('\Wdoi\W', text):
             self.publication.doi = '/'.join(text.split('/')[-2:])
 
     def startElement(self, name, attrs):
@@ -138,7 +144,11 @@ class DBLPContentHandler(xml.sax.ContentHandler):
                     self.add_venue_and_edition(self.features,
                                                pub_abbr=self.publication.abbr)
                 venue = self.retrieve_venue(self.features['venue_abbr'], name)
-                edition = self.retrieve_edition(self.features, venue)
+                try:
+                    edition = self.retrieve_edition(self.features, venue)
+                except IndexError as ie:
+                    self.publication = None
+                    return
                 pub_authors = self.retrieve_authors(
                     self.features['author_names'])
                 self.publication.edition = edition
