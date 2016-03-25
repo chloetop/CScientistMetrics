@@ -48,10 +48,9 @@ def get_authors(elem, session):
     temp = []
     for a in elem.itertext('author', with_tail=False):
         if a not in authors:
-            author = csmmodel.csauthor.CsAuthor(name=a)
-            authors[a] = author
-            session.add(author)
-        if author not in my_authors:
+            authors[a] = csmmodel.csauthor.CsAuthor(name=a)
+            session.add(authors[a])
+        if authors[a] not in my_authors:
             my_authors.append(authors[a])
     for idx,pub_author in enumerate(my_authors):
         a = csmmodel.author_pub_association.CsAuthorPubAssociation(
