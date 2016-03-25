@@ -11,7 +11,8 @@ class CsVenueEdition(Base):
                               sqlalchemy.ForeignKey('csvenues.abbr'))
     ordinal = sqlalchemy.Column(sqlalchemy.String)
     year = sqlalchemy.Column(sqlalchemy.Integer)
-    publications = sqlalchemy.orm.relationship('CsPublication', backref='edition')
+    publications = sqlalchemy.orm.relationship('CsPublication',
+                                               backref='edition')
 
     def __init__(self, abbr, venue, ordinal, year):
         self.abbr = abbr

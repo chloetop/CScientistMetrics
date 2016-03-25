@@ -3,214 +3,169 @@
 <dblp>
 
 <article key="journals/cacm/Gentry10" mdate="2010-04-26">
-<author>Craig Gentry</author>
-<title>Computing arbitrary functions of encrypted data.</title>
-<pages>97-105</pages>
-<year>2010</year>
-<volume>53</volume>
-<journal>Commun. ACM</journal>
-<number>3</number>
-<ee>http://doi.acm.org/10.1145/1666420.1666444</ee>
-<url>db/journals/cacm/cacm53.html#Gentry10</url>
+  <author>Craig Gentry</author>
+  <title>Computing arbitrary functions of encrypted data.</title>
+  <pages>97-105</pages>
+  <year>2010</year>
+  <volume>53</volume>
+  <journal>Commun. ACM</journal>
+  <number>3</number>
+  <ee>http://doi.acm.org/10.1145/1666420.1666444</ee>
+  <url>db/journals/cacm/cacm53.html#Gentry10</url>
 </article>
 
-<article mdate="2002-01-03" key="persons/Codd81">
-<author>E. F. Codd</author>
-<title>The Capabilities of Relational Database Management Systems.</title>
-<journal>IBM Research Report, San Jose, California</journal>
-<month>May</month>
-<year>1981</year>
-<volume>RJ3132</volume>
-<cdrom>ibmTR/rj3132.pdf</cdrom>
-<ee>db/labs/ibm/RJ3132.html</ee>
-</article>
+<inproceedings mdate="2011-06-09" key="conf/ac/Lagally78">
+  <author>Klaus Lagally</author>
+  <author>Klaus Lagally</author>
+  <title>Synchronization in a Layered System.</title>
+  <pages>252-281</pages>
+  <year>1978</year>
+  <crossref>conf/ac/1978os</crossref>
+  <booktitle>Advanced Course: Operating Systems</booktitle>
+  <url>db/conf/ac/os.html#Lagally78</url>
+  <ee>http://dx.doi.org/10.1007/3-540-08755-9_7</ee>
+</inproceedings>
 
-<article mdate="2016-02-01" key="journals/scp/LePFL16">
-<author>Thi Thieu Hoa Le</author>
-<author>Roberto Passerone</author>
-<author>Ulrich Fahrenberg</author>
-<author>Axel Legay</author>
-<title>A tag contract framework for modeling heterogeneous systems.</title>
-<pages>225-246</pages>
-<year>2016</year>
-<volume>115-116</volume>
-<journal>Sci. Comput. Program.</journal>
-<ee>http://dx.doi.org/10.1016/j.scico.2015.06.004</ee>
-<url>db/journals/scp/scp115.html#LePFL16</url>
-</article>
-
-<article mdate="2010-02-02" key="journals/dpd/CetintemelK02">
-<author>Ugur &Ccedil;etintemel</author>
-<author>Peter J. Keleher</author>
-<title>Light-Weight Currency Management Mechanisms in Mobile and Weakly-Connected Environments.</title>
-<pages>53-71</pages>
-<year>2002</year>
-<volume>11</volume>
-<journal>Distributed and Parallel Databases</journal>
-<number>1</number>
-<ee>http://dx.doi.org/10.1023/A:1013377523199</ee>
-</article>
-
-<article mdate="2011-12-07" key="journals/eccc/ECCC-TR04-067" publtype="informal publication">
-<author>Hadi Salmasian</author>
-<author>Ravindran Kannan</author>
-<author>Santosh Vempala</author>
-<title>The Spectral Method for Mixture Models</title>
-<journal>Electronic Colloquium on Computational Complexity (ECCC)</journal>
-<year>2004</year>
-<number>067</number>
-<url>db/journals/eccc/eccc11.html#ECCC-TR04-067</url>
-<ee>http://eccc.hpi-web.de/eccc-reports/2004/TR04-067/index.html</ee>
+<article mdate="2014-05-19" key="journals/acta/BulychevDLL14">
+  <author>Peter E. Bulychev</author>
+  <author>Alexandre David</author>
+  <author>Kim G. Larsen</author>
+  <author>Guangyuan Li</author>
+  <title>Efficient controller synthesis for a fragment of MTL<sub>0,&#8734;</sub>.</title>
+  <pages>165-192</pages>
+  <year>2014</year>
+  <volume>51</volume>
+  <journal>Acta Inf.</journal>
+  <number>3-4</number>
+  <ee>http://dx.doi.org/10.1007/s00236-013-0189-z</ee>
+  <url>db/journals/acta/acta51.html#BulychevDLL14</url>
 </article>
 
 <inproceedings mdate="2015-12-14" key="conf/sigsoft/PhamMS15">
-<author>Raphael Pham</author>
-<author>Jonas M&ouml;rschbach</author>
-<author>Kurt Schneider</author>
-<title>Communicating software testing culture through visualizing testing activity.</title>
-<pages>1-8</pages>
-<year>2015</year>
-<booktitle>SSE@SIGSOFT FSE</booktitle>
-<ee>http://doi.acm.org/10.1145/2804381.2804382</ee>
-<crossref>conf/sigsoft/2015sse</crossref>
-<url>db/conf/sigsoft/sse2015.html#PhamMS15</url>
+  <author>Raphael Pham</author>
+  <author>Jonas M&ouml;rschbach</author>
+  <author>Kurt Schneider</author>
+  <title>Communicating software testing culture through visualizing testing activity.</title>
+  <pages>1-8</pages>
+  <year>2015</year>
+  <booktitle>SSE@SIGSOFT FSE</booktitle>
+  <ee>http://doi.acm.org/10.1145/2804381.2804382</ee>
+  <crossref>conf/sigsoft/2015sse</crossref>
+  <url>db/conf/sigsoft/sse2015.html#PhamMS15</url>
 </inproceedings>
 
-<article mdate="2015-04-20" key="journals/biomedsem/BollingWH14">
-<author>Christian B&ouml;lling</author>
-<author>Michael Weidlich</author>
-<author>Hermann-Georg Holzh&uuml;tter</author>
-<title>SEE: structured representation of scientific evidence in the biomedical domain using Semantic Web techniques.</title>
-<pages>S1</pages>
-<year>2014</year>
-<volume>5</volume>
-<journal>J. Biomedical Semantics</journal>
-<number>S-1</number>
-<ee>http://dx.doi.org/10.1186/2041-1480-5-S1-S1</ee>
-<url>db/journals/biomedsem/biomedsem5S.html#BollingWH14</url>
-</article>
-
 <inproceedings mdate="2014-11-07" key="conf/sigsoft/RayPFD14">
-<author>Baishakhi Ray</author>
-<author>Daryl Posnett</author>
-<author>Vladimir Filkov</author>
-<author>Premkumar T. Devanbu</author>
-<title>A large scale study of programming languages and code quality in github.</title>
-<pages>155-165</pages>
-<year>2014</year>
-<booktitle>SIGSOFT FSE</booktitle>
-<ee>http://doi.acm.org/10.1145/2635868.2635922</ee>
-<crossref>conf/sigsoft/2014</crossref>
-<url>db/conf/sigsoft/fse2014.html#RayPFD14</url>
+  <author>Baishakhi Ray</author>
+  <author>Daryl Posnett</author>
+  <author>Vladimir Filkov</author>
+  <author>Premkumar T. Devanbu</author>
+  <title>A large scale study of programming languages and code quality in github.</title>
+  <pages>155-165</pages>
+  <year>2014</year>
+  <booktitle>SIGSOFT FSE</booktitle>
+  <ee>http://doi.acm.org/10.1145/2635868.2635922</ee>
+  <crossref>conf/sigsoft/2014</crossref>
+  <url>db/conf/sigsoft/fse2014.html#RayPFD14</url>
 </inproceedings>
 
 <inproceedings mdate="2015-09-08" key="conf/icse/CasalnuovoDOFR15">
-<author>Casey Casalnuovo</author>
-<author>Premkumar T. Devanbu</author>
-<author>Abilio Oliveira</author>
-<author>Vladimir Filkov</author>
-<author>Baishakhi Ray</author>
-<title>Assert Use in GitHub Projects.</title>
-<pages>755-766</pages>
-<year>2015</year>
-<booktitle>ICSE (1)</booktitle>
-<ee>http://dx.doi.org/10.1109/ICSE.2015.88</ee>
-<ee>http://dl.acm.org/citation.cfm?id=2818846</ee>
-<crossref>conf/icse/2015-1</crossref>
-<url>db/conf/icse/icse2015-1.html#CasalnuovoDOFR15</url>
+  <author>Casey Casalnuovo</author>
+  <author>Premkumar T. Devanbu</author>
+  <author>Abilio Oliveira</author>
+  <author>Vladimir Filkov</author>
+  <author>Baishakhi Ray</author>
+  <title>Assert Use in GitHub Projects.</title>
+  <pages>755-766</pages>
+  <year>2015</year>
+  <booktitle>ICSE (1)</booktitle>
+  <ee>http://dx.doi.org/10.1109/ICSE.2015.88</ee>
+  <ee>http://dl.acm.org/citation.cfm?id=2818846</ee>
+  <crossref>conf/icse/2015-1</crossref>
+  <url>db/conf/icse/icse2015-1.html#CasalnuovoDOFR15</url>
 </inproceedings>
 
 <inproceedings mdate="2015-04-01" key="conf/sigsoft/KnabKP09">
-<author>Patrick Knab</author>
-<author>Harald C. Gall</author>
-<author>Martin Pinzger</author>
-<title>Smart views for analyzing problem reports: tool demo.</title>
-<pages>289-290</pages>
-<year>2009</year>
-<booktitle>ESEC/SIGSOFT FSE</booktitle>
-<ee>http://doi.acm.org/10.1145/1595696.1595746</ee>
-<crossref>conf/sigsoft/2009</crossref>
-<url>db/conf/sigsoft/fse2009.html#KnabKP09</url>
+  <author>Patrick Knab</author>
+  <author>Harald C. Gall</author>
+  <author>Martin Pinzger</author>
+  <title>Smart views for analyzing problem reports: tool demo.</title>
+  <pages>289-290</pages>
+  <year>2009</year>
+  <booktitle>ESEC/SIGSOFT FSE</booktitle>
+  <ee>http://doi.acm.org/10.1145/1595696.1595746</ee>
+  <crossref>conf/sigsoft/2009</crossref>
+  <url>db/conf/sigsoft/fse2009.html#KnabKP09</url>
 </inproceedings>
 
 <inproceedings mdate="2011-06-14" key="conf/icse/Bass94">
-<author>Leonard J. Bass</author>
-<title>Working Group on Formal Methods in HCI and Software Engineering.</title>
-<pages>14-16</pages>
-<year>1994</year>
-<crossref>conf/icse/1994sehci</crossref>
-<booktitle>ICSE Workshop on SE-HCI</booktitle>
-<url>db/conf/icse/sehci1994.html#Bass94</url>
-<ee>http://dx.doi.org/10.1007/BFb0035803</ee>
+  <author>Leonard J. Bass</author>
+  <title>Working Group on Formal Methods in HCI and Software Engineering.</title>
+  <pages>14-16</pages>
+  <year>1994</year>
+  <crossref>conf/icse/1994sehci</crossref>
+  <booktitle>ICSE Workshop on SE-HCI</booktitle>
+  <url>db/conf/icse/sehci1994.html#Bass94</url>
+  <ee>http://dx.doi.org/10.1007/BFb0035803</ee>
 </inproceedings>
 
 <incollection mdate="2015-04-01" key="series/springer/DAmbrosGLP08">
-<author>Marco D'Ambros</author>
-<author>Harald C. Gall</author>
-<author>Michele Lanza</author>
-<author>Martin Pinzger</author>
-<title>Analysing Software Repositories to Understand Software Evolution.</title>
-<pages>37-67</pages>
-<year>2008</year>
-<booktitle>Software Evolution</booktitle>
-<ee>http://dx.doi.org/10.1007/978-3-540-76440-3_3</ee>
-<crossref>series/springer/2008Mens</crossref>
-<url>db/series/springer/Mens2008.html#DAmbrosGLP08</url>
+  <author>Marco D'Ambros</author>
+  <author>Harald C. Gall</author>
+  <author>Michele Lanza</author>
+  <author>Martin Pinzger</author>
+  <title>Analysing Software Repositories to Understand Software Evolution.</title>
+  <pages>37-67</pages>
+  <year>2008</year>
+  <booktitle>Software Evolution</booktitle>
+  <ee>http://dx.doi.org/10.1007/978-3-540-76440-3_3</ee>
+  <crossref>series/springer/2008Mens</crossref>
+  <url>db/series/springer/Mens2008.html#DAmbrosGLP08</url>
 </incollection>
 
-<article mdate="2011-12-29" key="tr/ibm/LILOG43" publtype="informal publication">
-<author>Rainer B&auml;uerle</author>
-<title>Ereignisse und Repr&auml;sentationen</title>
-<journal>LILOG-Report</journal>
-<volume>43</volume>
-<year>1988</year>
-<publisher>IBM Deutschland GmbH</publisher>
-</article>
-
 <inproceedings mdate="2015-09-08" key="conf/icse/SiegmundSA15">
-<author>Janet Siegmund</author>
-<author>Norbert Siegmund</author>
-<author>Sven Apel</author>
-<title>Views on Internal and External Validity in Empirical Software Engineering.</title>
-<pages>9-19</pages>
-<year>2015</year>
-<booktitle>ICSE (1)</booktitle>
-<ee>http://dx.doi.org/10.1109/ICSE.2015.24</ee>
-<ee>http://dl.acm.org/citation.cfm?id=2818759</ee>
-<crossref>conf/icse/2015-1</crossref>
-<url>db/conf/icse/icse2015-1.html#SiegmundSA15</url>
+  <author>Janet Siegmund</author>
+  <author>Norbert Siegmund</author>
+  <author>Sven Apel</author>
+  <title>Views on Internal and External Validity in Empirical Software Engineering.</title>
+  <pages>9-19</pages>
+  <year>2015</year>
+  <booktitle>ICSE (1)</booktitle>
+  <ee>http://dx.doi.org/10.1109/ICSE.2015.24</ee>
+  <ee>http://dl.acm.org/citation.cfm?id=2818759</ee>
+  <crossref>conf/icse/2015-1</crossref>
+  <url>db/conf/icse/icse2015-1.html#SiegmundSA15</url>
 </inproceedings>
 
 <inproceedings key="conf/focs/Yao82a" mdate="2011-10-19">
-<title>Theory and Applications of Trapdoor Functions (Extended Abstract)</title>
-<author>Andrew Chi-Chih Yao</author>
-<pages>80-91</pages>
-<crossref>conf/focs/FOCS23</crossref>
-<year>1982</year>
-<booktitle>FOCS</booktitle>
-<url>db/conf/focs/focs82.html#Yao82a</url>
-<ee>http://doi.ieeecomputersociety.org/10.1109/SFCS.1982.45</ee>
+  <title>Theory and Applications of Trapdoor Functions (Extended Abstract)</title>
+  <author>Andrew Chi-Chih Yao</author>
+  <pages>80-91</pages>
+  <crossref>conf/focs/FOCS23</crossref>
+  <year>1982</year>
+  <booktitle>FOCS</booktitle>
+  <url>db/conf/focs/focs82.html#Yao82a</url>
+  <ee>http://doi.ieeecomputersociety.org/10.1109/SFCS.1982.45</ee>
 </inproceedings>
 
 <article mdate="2015-06-23" key="journals/scp/CeruloPBCC15">
-<author>Luigi Cerulo</author>
-<author>Massimiliano Di Penta</author>
-<author>Alberto Bacchelli</author>
-<author>Michele Ceccarelli</author>
-<author>Gerardo Canfora</author>
-<title>Irish: A Hidden Markov Model to detect coded information islands in free text.</title>
-<pages>26-43</pages>
-<year>2015</year>
-<volume>105</volume>
-<journal>Sci. Comput. Program.</journal>
-<ee>http://dx.doi.org/10.1016/j.scico.2014.11.017</ee>
-<url>db/journals/scp/scp105.html#CeruloPBCC15</url>
+  <author>Luigi Cerulo</author>
+  <author>Massimiliano Di Penta</author>
+  <author>Alberto Bacchelli</author>
+  <author>Michele Ceccarelli</author>
+  <author>Gerardo Canfora</author>
+  <title>Irish: A Hidden Markov Model to detect coded information islands in free text.</title>
+  <pages>26-43</pages>
+  <year>2015</year>
+  <volume>105</volume>
+  <journal>Sci. Comput. Program.</journal>
+  <ee>http://dx.doi.org/10.1016/j.scico.2014.11.017</ee>
+  <url>db/journals/scp/scp105.html#CeruloPBCC15</url>
 </article>
 
 <www mdate="2004-03-23" key="homepages/g/OdedGoldreich">
-<author>Oded Goldreich</author>
-<title>Home Page</title>
-<url>http://www.wisdom.weizmann.ac.il/~oded/</url>
+  <author>Oded Goldreich</author>
+  <title>Home Page</title>
+  <url>http://www.wisdom.weizmann.ac.il/~oded/</url>
 </www>
 
 </dblp>

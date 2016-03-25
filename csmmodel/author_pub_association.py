@@ -15,11 +15,11 @@ class CsAuthorPubAssociation(Base):
                                  primary_key=True)
 
     position = sqlalchemy.Column(sqlalchemy.Integer)
-
-    author = sqlalchemy.orm.relationship('CsAuthor',
-                                         back_populates='publications')
     publication = sqlalchemy.orm.relationship('CsPublication',
                                               back_populates='authors')
+    author = sqlalchemy.orm.relationship('CsAuthor',
+                                         back_populates='publications')
+
 
 
     def __init__(self, position):
