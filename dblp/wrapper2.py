@@ -142,7 +142,7 @@ def parse_and_store(source, db_string=None, session=None):
             logging.debug(
                 "Ignored '%s' " % elem.attrib)
         else:
-            pub = create_publication(elem, my_session)
+            create_publication(elem, my_session)
             if idx % 5000 == 1:
                 my_session.commit()
                 logging.debug("committed %s" % idx)
