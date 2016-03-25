@@ -154,18 +154,19 @@ def _get_args():
         'Parse large XML files linearly with low memory footprint')
     parser.add_argument("input", help="file to parse")
     parser.add_argument("database", help="database string")
+    parser.add_argument("-l","--logfile", help="file to output log")
     return parser.parse_args()
 
 
-def define_logging():
-    logging.basicConfig(level=logging.INFO,
+def define_logging(logfile):
+    logging.basicConfig(level=logging.INFO, filename=logfile,
                         format='%(asctime)s %(message)s')
     logging.getLogger().setLevel(logging.DEBUG)
 
 
 def main():
-    define_logging()
     args = _get_args()
+    define_logging(args.logfile)
     logging.debug('Parsing process: START')
     parse_and_store(args.input, args.database)
     logging.debug('Parsing process: END')
