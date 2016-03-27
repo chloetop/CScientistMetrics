@@ -12,7 +12,9 @@ import re
 CLEAN_TABLES = True
 TAGS = ["article", "inproceedings"]
 TO_IGNORE = ["dblpnote", "persons"]
-authors = {}
+# authors = {}
+author_names = set()
+unsaved_author_names = set()
 venues = {}
 editions = {}
 _session = None
@@ -24,7 +26,7 @@ def create_session(db_string):
         Base.metadata.drop_all(engine)
         Base.metadata.create_all(engine)
 
-    Session = sqlalchemy.orm.sessionmaker()
+    Session = sqlalchemy.orm.sessionmaker(autoflush=False)
     Session.configure(bind=engine)
     return Session()
 
@@ -43,21 +45,33 @@ def get_doi(elem):
     return None
 
 
-def get_authors(elem, session):
-    my_authors = []
-    temp = []
-    for a in elem.itertext('author', with_tail=False):
-        if a not in authors:
-            authors[a] = csmmodel.csauthor.CsAuthor(name=a)
-            session.add(authors[a])
-        if authors[a] not in my_authors:
-            my_authors.append(authors[a])
-    for idx,pub_author in enumerate(my_authors):
-        a = csmmodel.author_pub_association.CsAuthorPubAssociation(
-            position=idx)
-        a.author = pub_author
-        temp.append(a)
-    return temp
+def get_author(name, session):
+    if name in author_names:
+        if name in unsaved_author_names:
+            session.commit()
+            unsaved_author_names.clear()
+        return session.query(csmmodel.csauthor.CsAuthor).filter_by(
+            name=name).first()
+    au = csmmodel.csauthor.CsAuthor(name=name)
+    author_names.add(au.name)
+    unsaved_author_names.add(au.name)
+    session.add(au)
+    return au
+
+
+def get_authors(elem, pub, session):
+    my_associations = dict()
+    idx = 0
+    for au_name in elem.itertext('author', with_tail=False):
+        if au_name not in my_associations:
+            au = get_author(au_name, session)
+            assoc = csmmodel.author_pub_association.CsAuthorPubAssociation(
+                position=idx)
+            assoc.author = au
+            assoc.publication = pub
+            my_associations[au_name] = assoc
+            idx += 1
+    return list(my_associations.values())
 
 
 def log_ed_abbreviation(elem, ed_abbr):
@@ -121,7 +135,7 @@ def create_publication(elem, session):
     pub.pages = elem.findtext('year')
     pub.pages = elem.findtext('pages')
     pub.doi = get_doi(elem)
-    pub.authors = get_authors(elem, session)
+    pub.authors = get_authors(elem, pub, session)
     pub.edition = get_edition(elem, session)
     session.add(pub)
     return pub
@@ -145,6 +159,7 @@ def parse_and_store(source, db_string=None, session=None):
             create_publication(elem, my_session)
             if idx % 5000 == 1:
                 my_session.commit()
+                unsaved_author_names.clear()
                 logging.debug("committed %s" % idx)
     my_session.commit()
 
@@ -154,7 +169,7 @@ def _get_args():
         'Parse large XML files linearly with low memory footprint')
     parser.add_argument("input", help="file to parse")
     parser.add_argument("database", help="database string")
-    parser.add_argument("-l","--logfile", help="file to output log")
+    parser.add_argument("-l", "--logfile", help="file to output log")
     return parser.parse_args()
 
 
