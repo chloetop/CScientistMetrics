@@ -20,15 +20,35 @@ editions = {}
 _session = None
 
 
-def create_session(db_string):
+def restore_data(session):
+    global author_names
+    global venues
+    global editions
+    logging.debug("loading previous data from database")
+    logging.debug("loading authors from database")
+    authors = session.query(csmmodel.csauthor.CsAuthor).all()
+    author_names = set([au.name for au in authors])
+    logging.debug("loading venues from database")
+    vs = session.query(csmmodel.csvenue.CsVenue).all()
+    venues = dict([(venue.abbr, venue) for venue in vs])
+    logging.debug("loading venue editions from database")
+    ves = session.query(csmmodel.csvenueedition.CsVenueEdition).all()
+    editions = dict([(veds.abbr, veds) for veds in ves])
+    logging.debug("previous data from database restored")
+
+
+def create_session(db_string, restore):
     engine = sqlalchemy.create_engine(db_string)
-    if CLEAN_TABLES:
+    if CLEAN_TABLES and not restore:
         Base.metadata.drop_all(engine)
         Base.metadata.create_all(engine)
 
     Session = sqlalchemy.orm.sessionmaker(autoflush=False)
     Session.configure(bind=engine)
-    return Session()
+    ses = Session()
+    if restore:
+        restore_data(ses)
+    return ses
 
 
 def to_ignore(elem):
@@ -141,9 +161,9 @@ def create_publication(elem, session):
     return pub
 
 
-def parse_and_store(source, db_string=None, session=None):
+def parse_and_store(source, restore, db_string=None, session=None):
     if db_string:
-        my_session = create_session(db_string)
+        my_session = create_session(db_string, restore)
     elif session:
         my_session = session
     else:
@@ -170,6 +190,7 @@ def _get_args():
     parser.add_argument("input", help="file to parse")
     parser.add_argument("database", help="database string")
     parser.add_argument("-l", "--logfile", help="file to output log")
+    parser.add_argument("-r", "--restore", action="store_true")
     return parser.parse_args()
 
 
@@ -183,7 +204,7 @@ def main():
     args = _get_args()
     define_logging(args.logfile)
     logging.debug('Parsing process: START')
-    parse_and_store(args.input, args.database)
+    parse_and_store(args.input, args.restore, db_string=args.database)
     logging.debug('Parsing process: END')
 
 
